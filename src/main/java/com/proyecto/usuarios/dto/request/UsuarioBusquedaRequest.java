@@ -2,6 +2,7 @@ package com.proyecto.usuarios.dto.request;
 
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,9 +22,11 @@ public class UsuarioBusquedaRequest {
 
     private Boolean activo;
 
+    @NotNull(message = "La página es obligatoria.")
     @Min(value = 0, message = "La página no puede ser negativa.")
     private Integer pagina = 0;
 
+    @NotNull(message = "El tamaño es obligatorio.")
     @Min(value = 1, message = "El tamaño mínimo es 1.")
     @Max(value = 50, message = "El tamaño máximo es 50.")
     private Integer tamano = 10;
