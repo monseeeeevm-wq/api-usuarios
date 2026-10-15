@@ -12,6 +12,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedModel;
 import org.springframework.data.web.PageableDefault;
@@ -47,7 +48,7 @@ public class UsuarioController {
     @Operation(summary = "Listar usuarios",
             description = "Devuelve el listado de usuarios de forma paginada.")
     public ResponseEntity<PagedModel<UsuarioResponse>> listar(
-            @PageableDefault(size = 10, sort = "id") Pageable pageable) {
+            @ParameterObject @PageableDefault(size = 10, sort = "id") Pageable pageable) {
         return ResponseEntity.ok(new PagedModel<>(usuarioService.listar(pageable)));
     }
 
